@@ -1,0 +1,29 @@
+{
+  "name": "PIXI-State-Test",
+  "version": "1.0.0",
+  "description": "Tiny experiment to implement moving in/out of states or levels in a PIXI program.",
+  "scripts": {
+    "build": "webpack",
+    "devel": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanFleck/pixi-state-test.git"
+  },
+  "keywords": [],
+  "author": "Ryan Fleck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RyanFleck/pixi-state-test/issues"
+  },
+  "homepage": "https://github.com/RyanFleck/pixi-state-test",
+  "devDependencies": {
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "ansicolor": "^1.1.78",
+    "pixi.js": "^4.8.2",
+    "stats.js": "^0.17.0"
+  }
+}
