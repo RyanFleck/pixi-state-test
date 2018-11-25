@@ -3,17 +3,13 @@ import * as Stats from 'stats.js';
 
 import Engine from './inc/engine';
 import Log from './inc/log';
+import Pylon from './inc/pylon';
 
 const stats = new Stats();
 stats.showPanel(0);
 
 // PIXI Config
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
-
-// PIXI Aliases as noted in README resources.
-const loader = PIXI.loader;
-const resources = PIXI.loader.resources;
-const Sprite = PIXI.Sprite;
 
 // Important Game Elements
 const engine = new Engine();
@@ -27,21 +23,51 @@ function game() {
 
     // Temp Setup
 
-    const p = new PIXI.Graphics();
-    p.beginFill(0xFFFFFF);
-    p.lineStyle(0);
-    p.drawCircle(100, 100, 10);
-    p.endFill();
 
-    p.x = 50;
-    p.y = 50;
-
-    engine.stage.addChild(p);
+    engine.stage.addChild(testGrid());
+    engine.stage.addChild(testPoint(100, 100));
+    engine.stage.addChild(new Pylon(150, 100));
+    engine.stage.addChild(new Pylon(170, 100));
 
     // End Temp Setup
 
     animate();
 }
+
+function testPoint(x, y) {
+    const p = new PIXI.Graphics();
+    p.beginFill(0x48C9B0);
+    p.lineStyle(0);
+    p.drawCircle(0, 0, 2);
+    p.endFill();
+    p.x = x;
+    p.y = y;
+    return p;
+}
+
+function testGrid() {
+    Log.log('<> Gen testgrid.');
+    const p = new PIXI.Graphics();
+    const linecolor = 0x260A27;
+    const linedensity = 25;
+
+    for (let x = linedensity; x < 300; x += linedensity) {
+        p.lineStyle(1, linecolor);
+        p.moveTo(x, 0);
+        p.lineTo(x, 200);
+    }
+
+    for (let y = linedensity; y < 200; y += linedensity) {
+        p.lineStyle(1, linecolor);
+        p.moveTo(0, y);
+        p.lineTo(300, y);
+    }
+
+    return p;
+}
+
+
+
 
 function animate() {
     stats.begin();

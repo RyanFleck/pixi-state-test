@@ -15,7 +15,6 @@ class Engine {
             transparent: false,
             roundPixels: true,
             resolution: window.devicePixelRatio || 1,
-            backgroundColor: 0x222222,
         });
         this.app.view.style.display = 'block';
         this.app.view.id = 'game';
