@@ -1,9 +1,9 @@
 import * as PIXI from 'pixi.js';
 import * as Stats from 'stats.js';
 
-import Engine from './inc/engine';
-import Log from './inc/log';
-import Pylon from './inc/pylon';
+import Engine from './core/engine';
+import Log from './entity/log';
+import Pylon from './entity/pylon';
 
 const stats = new Stats();
 stats.showPanel(0);
@@ -23,26 +23,26 @@ function game() {
 
     // Temp Setup
 
-
     engine.stage.addChild(testGrid());
-    engine.stage.addChild(testPoint(100, 100));
-    engine.stage.addChild(new Pylon(150, 100));
-    engine.stage.addChild(new Pylon(170, 100));
+    for (let d = 75; d <= 225; d += 25) {
+        engine.stage.addChild(new Pylon(d, 100));
+    }
+
+    const style = new PIXI.TextStyle({
+        fontFamily: 'Courier New',
+        fontSize: 18,
+        lineJoin: 'round',
+        fill: 'white',
+    });
+
+    const basicText = new PIXI.Text('ROOM 1', style);
+    basicText.x = 10;
+    basicText.y = 180;
+    engine.stage.addChild(basicText);
 
     // End Temp Setup
 
     animate();
-}
-
-function testPoint(x, y) {
-    const p = new PIXI.Graphics();
-    p.beginFill(0x48C9B0);
-    p.lineStyle(0);
-    p.drawCircle(0, 0, 2);
-    p.endFill();
-    p.x = x;
-    p.y = y;
-    return p;
 }
 
 function testGrid() {
@@ -65,9 +65,6 @@ function testGrid() {
 
     return p;
 }
-
-
-
 
 function animate() {
     stats.begin();

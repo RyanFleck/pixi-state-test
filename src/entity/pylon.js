@@ -1,4 +1,6 @@
-import { Graphics, Sprite } from 'pixi.js';
+import {
+    Graphics, Sprite, Text, TextStyle,
+} from 'pixi.js';
 
 
 /* Usage:
